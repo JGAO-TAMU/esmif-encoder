@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+esmifenv/
+Modified-ESM-Encoder/
+esmifenv/
+processed_pdb/
