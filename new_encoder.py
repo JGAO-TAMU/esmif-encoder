@@ -32,7 +32,7 @@ class ESMIFTowerModified(nn.Module):
         self.structure_processor = self._build_structure_processor()
 
     
-    def forward(self, file_path: str, chain: str = None):
+    def forward(self, coords: torch.Tensor): # only takes torch.tensor as input so we need to preprocess manually
         """
         Forward pass with flexible file type support.
         
@@ -46,8 +46,6 @@ class ESMIFTowerModified(nn.Module):
         """
         if not self.is_loaded:
             self.load_model()
-        
-        coords = self.structure_processor(file_path, chain)
 
         
         # move to appropriate device (important for cuda)

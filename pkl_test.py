@@ -18,16 +18,17 @@ def test_modified_encoder(pkl_file):
     """Test the modified encoder with both PDB and pickle files."""
     
     # Initialize modified encoder
-    encoder = ESMIFTowerModified(delay_load=False)
-    
+    tower = ESMIFTowerModified(delay_load=False)
+    tower = tower.to("cuda")
     # Test with PDB file
     # print("Testing with PDB file...")
     # pdb_features = encoder.forward("sample_protein.pdb", chain="A", file_type="pdb")
     # print(f"PDB features shape: {pdb_features.shape}")
     
     # Test with pickle file
-    print("Testing with FrameFlow pickle file...")
-    pickle_features = encoder.forward(pkl_file)
+    print(f"Testing with FrameFlow pickle file {pkl_file}...")
+    coords = tower.structure_processor(pkl_file)
+    pickle_features = tower(coords.to("cuda"))
     print(f"Pickle features shape: {pickle_features.shape}")
     
     # Compare features
