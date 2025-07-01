@@ -5,3 +5,5 @@ esmifenv/
 Modified-ESM-Encoder/
 esmifenv/
 processed_pdb/
+esm3structure_encoder.py
+esm_quickstart.py

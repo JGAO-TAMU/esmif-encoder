@@ -1,0 +1,1 @@
+. .\esmifenv\Scripts\Activate.ps1

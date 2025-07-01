@@ -4,7 +4,7 @@ from new_encoder import ESMIFTowerModified
 def test_original_encoder(pdb_path = r"pdb\1a8m.pdb\pdb1a8m.pdb"):
     """Test the current ESMIF encoder with a standard PDB file."""
     
-    encoder = ESMIFTower( # Use OriginalESMIFTower
+    encoder = ESMIFTower(
         model_name="esm_if1_gvp4_t16_142M_UR50",
         delay_load=False
     )
@@ -30,11 +30,11 @@ def test_new_encoder(pdb_path = r"pdb\1a8m.pdb\pdb1a8m.pdb"):
         delay_load=False
     )
     
-    # The new encoder's forward method handles structure processing
-    features = encoder.forward(file_path=pdb_path, chain="A")
-    
+    # Process structure to get coordinates tensor
+    coords_tensor = encoder.structure_processor(pdb_path, chain="A")
+    features = encoder.forward(coords=coords_tensor)
 
-    return features # Returning features, coords are processed internally
+    return features # Returning features
     
 # Execute test
 pdb_files_to_test = [
