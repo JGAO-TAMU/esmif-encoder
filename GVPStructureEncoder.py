@@ -75,10 +75,9 @@ class GVPStructureEncoder(nn.Module):
 
 
 if __name__ == "__main__":
-    # Test harness
     batch_size, seq_len = 2, 100
     coords = torch.randn(batch_size, seq_len, 3)
-    seq_feats = torch.randn(batch_size, seq_len, 20)  # e.g., 20 aa one-hot
+    seq_feats = torch.randn(batch_size, seq_len, 20)  #20 aa one-hot
 
     # GVP encoder
     gvp_enc = GVPStructureEncoder(seq_dim=20)
